@@ -1,15 +1,15 @@
 package io.github.tuizim.spring_boot_learning_journey.model;
 public class Product {
-    private int id;
+    private String id;
     private String name;
     private String description;
-    private double value;
+    private double amount;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -29,12 +29,12 @@ public class Product {
         this.description = description;
     }
 
-    public double getValue() {
-        return value;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", value=" + value +
+                ", amount=" + amount +
                 '}';
     }
 }
