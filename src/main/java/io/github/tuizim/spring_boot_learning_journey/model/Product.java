@@ -1,8 +1,22 @@
 package io.github.tuizim.spring_boot_learning_journey.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table (name = "produto")
 public class Product {
+
+    @Id
+    @Column (name = "id")
     private String id;
+    @Column (name = "name")
     private String name;
+    @Column (name = "description")
     private String description;
+    @Column (name = "amount")
     private double amount;
 
     public String getId() {
