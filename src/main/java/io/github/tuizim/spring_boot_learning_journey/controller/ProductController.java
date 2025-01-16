@@ -4,6 +4,7 @@ import io.github.tuizim.spring_boot_learning_journey.model.Product;
 import io.github.tuizim.spring_boot_learning_journey.repository.ProductRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -28,5 +29,14 @@ public class ProductController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") String id){
         productRepository.deleteById(id);
+    }
+    @PutMapping("{id}")
+    public void update(@PathVariable String id,@RequestBody Product product){
+        product.setId(id);
+        productRepository.save(product);
+    }
+    @GetMapping
+    public List<Product> search(@RequestParam String name){
+        return productRepository.findByName(name);
     }
 }
