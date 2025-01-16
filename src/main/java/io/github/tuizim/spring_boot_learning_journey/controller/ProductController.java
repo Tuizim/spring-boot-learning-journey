@@ -2,10 +2,7 @@ package io.github.tuizim.spring_boot_learning_journey.controller;
 
 import io.github.tuizim.spring_boot_learning_journey.model.Product;
 import io.github.tuizim.spring_boot_learning_journey.repository.ProductRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -17,11 +14,19 @@ public class ProductController {
         this.productRepository = productRepository;
     }
     @PostMapping
-    public Product Save(@RequestBody Product product){
+    public Product save(@RequestBody Product product){
         String id = UUID.randomUUID().toString();
         product.setId(id);
         productRepository.save(product);
         System.out.println("product saved: "+ product);
         return product;
+    }
+    @GetMapping("{id}")
+    public Product getById(@PathVariable("id") String id){
+        return productRepository.findById(id).orElse(null);
+    }
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") String id){
+        productRepository.deleteById(id);
     }
 }
